@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycoloc"
+version = "0.1.0"
+description = "Pure-Python port of the R package coloc — Bayesian colocalisation of two genetic traits via Approximate Bayes Factors and SuSiE."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Zehua Zeng", email = "starlitnightly@163.com" },
+]
+keywords = [
+    "colocalisation", "coloc", "GWAS", "eQTL", "QTL", "fine-mapping",
+    "approximate-bayes-factor", "SuSiE", "genetics", "statistical-genetics",
+    "Bayesian", "PP.H4",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+dependencies = [
+    "numpy>=1.23",
+    "scipy>=1.10",
+    "pandas>=1.5",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "pytest-cov", "ruff", "jupyter", "nbconvert"]
+
+[project.urls]
+Homepage = "https://github.com/omicverse/py-coloc"
+Repository = "https://github.com/omicverse/py-coloc"
+Issues = "https://github.com/omicverse/py-coloc/issues"
+"Upstream R package" = "https://cran.r-project.org/package=coloc"
+"Upstream (omicverse)" = "https://github.com/Starlitnightly/omicverse"
+
+[tool.setuptools.packages.find]
+include = ["pycoloc*"]
+exclude = ["tests*", "examples*", "coloc-ref*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+    "ignore::RuntimeWarning",
+    "ignore::UserWarning",
+]
